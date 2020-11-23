@@ -1,4 +1,4 @@
-import {Request} from "express";
+
 import {Schema, model, Document} from "mongoose";
 
 const UserSchema = new Schema({
@@ -22,9 +22,9 @@ const UserSchema = new Schema({
 });
 
 interface IUserSchema extends Document {
-	name: String;
-	email: String;
-	password: String;
+	name: string;
+	email: string;
+	password: string;
 	date: Date;
 }
 

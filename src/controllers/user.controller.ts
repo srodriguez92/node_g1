@@ -4,6 +4,8 @@ import jwt from "jsonwebtoken";
 import config from "config";
 import User from "../models/user";
 import {ErrorHandler, handleError} from "../error";
+import body_user_validations from "../middlewares/validators/user/user.validator";
+import validator_handler from "../middlewares/validator";
 
 const router = Router();
 //============
@@ -11,7 +13,7 @@ const router = Router();
 //Resgister User
 //PUBLIC
 //============
-router.post("/", async (req: Request, resp: Response) => {
+router.post("/", body_user_validations, validator_handler, async (req: Request, resp: Response) => {
 	const {name, email, password} = req.body;
 	try {
 		let user = await User.findOne({email});
